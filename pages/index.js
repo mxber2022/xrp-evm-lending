@@ -492,10 +492,10 @@ export default function Home() {
     };
     
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.background}`}>
 
       <Head>
-        <title>XRPLend | EVM Sidechain Lending</title>
+        <title>DefiDave | EVM Sidechain Lending</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -503,13 +503,16 @@ export default function Home() {
 
         <div className={styles.header}>
           <img src="/xrpl_logo.svg" alt="XRPL Logo" className={styles.logo} />
+          <h1 className={styles.titleGreen}>
+             <span className={styles.whiteText}></span>DefiDave
+          </h1>
           {showLendTable ? (
           <h1 className={styles.titleGreen}>
-            Lend <span className={styles.whiteText}>EVM</span>
+             <span className={styles.whiteText}></span>
           </h1>
           ) : (
           <h1 className={styles.titleRed}>
-            Borrow <span className={styles.whiteText}>EVM</span>
+             <span className={styles.whiteText}></span>
           </h1>
               )}
         </div>

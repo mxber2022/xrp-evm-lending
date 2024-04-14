@@ -1,5 +1,30 @@
 /* styles.css or Home.module.css */
 
+
+
+
+.background {
+  background-image: url('/bc.jpg'); 
+  position: relative;
+  min-height: 100vh; /* Adjust as needed */
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/bc.jpg'); /* Replace 'bc.jpg' with your image file name */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1; /* Adjust the opacity value (0 to 1) */
+  pointer-events: none; /* Make sure the pseudo-element doesn't capture click events */
+}
+
+
+
 .container {
   min-height: 100vh;
   min-width: 100vh;
