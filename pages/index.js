@@ -12,9 +12,14 @@ import CONTRACT_ABI from '../smart-contracts/XRPLendingBorrowingABI';
 import TOKEN_ABI from '../smart-contracts/XRPLendTokenABI';
 import FAUCET_ABI from '../smart-contracts/faucetABI';
 
-const tokenContractAddress = "0x143dacb2c2e479b764421c0bbe825c805a320fa5";
-const lendingContractAddress = "0x445C4FbDB81d92f80B4580F434BBb42105B90eeb";
-const faucetContractAddress = "0x945A4Ad6F6D434F3Bc7922F7d398dDB8087dADA8";
+// const tokenContractAddress = "0x143dacb2c2e479b764421c0bbe825c805a320fa5";
+const tokenContractAddress = "0xAaa906c8C2720c50B69a5Ba54B44253Ea1001C98";
+
+//const lendingContractAddress = "0x445C4FbDB81d92f80B4580F434BBb42105B90eeb";
+const lendingContractAddress = "0x2E61762970Ed685ae91c8aCa27D7E926C67f1662";
+
+// const faucetContractAddress = "0x945A4Ad6F6D434F3Bc7922F7d398dDB8087dADA8";
+const faucetContractAddress = "0xb5dD8f6770593bC05Dc5B336F809695Ee481c991";
 
 export default function Home() {
 
@@ -285,7 +290,7 @@ export default function Home() {
         console.log('Lend Amount:', lendAmount);
         console.log('Amount in Wei:', amountInWei, "dbaqdbd:    ", userAddress);
     
-        const tx = lendingContractInstance.methods.lend("0x143dacb2c2e479b764421c0bbe825c805a320fa5", lendAmount.toString());
+        const tx = lendingContractInstance.methods.lend("0xAaa906c8C2720c50B69a5Ba54B44253Ea1001C98", lendAmount.toString());
         var gas = await tx.estimateGas({ from: userAddress });
         const data = tx.encodeABI();
         console.log("gassss: ", gas)
