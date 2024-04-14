@@ -16,10 +16,13 @@ import FAUCET_ABI from '../smart-contracts/faucetABI';
 const tokenContractAddress = "0xAaa906c8C2720c50B69a5Ba54B44253Ea1001C98";
 
 //const lendingContractAddress = "0x445C4FbDB81d92f80B4580F434BBb42105B90eeb";
-const lendingContractAddress = "0x2E61762970Ed685ae91c8aCa27D7E926C67f1662";
+//const lendingContractAddress = "0x2E61762970Ed685ae91c8aCa27D7E926C67f1662";
+const lendingContractAddress = "0x5b34331FA3368C91D5199e71f4662555499A5F01"
 
 // const faucetContractAddress = "0x945A4Ad6F6D434F3Bc7922F7d398dDB8087dADA8";
 const faucetContractAddress = "0xb5dD8f6770593bC05Dc5B336F809695Ee481c991";
+
+
 
 export default function Home() {
 
@@ -232,6 +235,41 @@ export default function Home() {
             console.error(error);
         }
     }
+
+    const approveToken2 = async function() {
+        
+      if (!web3) {
+          return undefined
+      }
+  
+      try {
+        console.log(provider)
+
+          const value = web3.utils.toWei("100", 'ether');
+          const tx = tokenContractInstance.methods.approve(lendingContractAddress, value);
+          var gas = await tx.estimateGas({from:userAddress});
+          const data = tx.encodeABI();
+          console.log("gassss: ", gas)
+          const transactionHash = await provider.request({
+            method: 'eth_sendTransaction',
+            params: [
+              {
+                  gas: web3.utils.toHex(gas),
+                  
+                  to: tokenContractAddress2,
+                  'from': userAddress,
+                  value: 0x0,
+                  data: data
+                // And so on...
+              },
+            ],
+          });
+          // Handle the result
+          console.log(transactionHash);
+      }catch (error) {
+          console.error(error);
+      }
+  }
 
     // Fetch balances with explorer API
     useEffect(() => {
@@ -593,6 +631,7 @@ export default function Home() {
           <h2>Global Pool</h2>
 
           {showLendTable ? (
+            <>
           <div>
             <table className={styles.positionTable}>
               <thead>
@@ -658,6 +697,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+</>
         ) : (
           <div>
             <table className={styles.positionTable}>
